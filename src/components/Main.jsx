@@ -1,22 +1,25 @@
-function Main() {
+function Main({
+  titulo,
+  subtitulo,
+  boton1,
+  boton2,
+  servicios,
+  ctaTexto,
+  ctaBoton,
+}) {
   return (
     <main style={styles.main}>
-
       {/* HERO */}
       <section style={styles.hero}>
         <div style={styles.overlay}></div>
 
-        <h1 style={styles.title}>
-          Impulsa tu presencia digital 🚀
-        </h1>
+        <h1 style={styles.title}>{titulo}</h1>
 
-        <p style={styles.subtitle}>
-          Diseñamos experiencias web modernas, rápidas y atractivas que destacan del resto.
-        </p>
+        <p style={styles.subtitle}>{subtitulo}</p>
 
         <div style={styles.buttons}>
-          <button style={styles.primaryBtn}>Empezar</button>
-          <button style={styles.secondaryBtn}>Ver más</button>
+          <button style={styles.primaryBtn}>{boton1}</button>
+          <button style={styles.secondaryBtn}>{boton2}</button>
         </div>
       </section>
 
@@ -25,29 +28,20 @@ function Main() {
         <h2 style={styles.sectionTitle}>Nuestros Servicios</h2>
 
         <div style={styles.cards}>
-          <div style={styles.card}>
-            <h3>💻 Desarrollo Web</h3>
-            <p>Aplicaciones modernas con alto rendimiento.</p>
-          </div>
-
-          <div style={styles.card}>
-            <h3>🎨 Diseño UI/UX</h3>
-            <p>Interfaces elegantes centradas en el usuario.</p>
-          </div>
-
-          <div style={styles.card}>
-            <h3>⚡ Optimización</h3>
-            <p>Velocidad y eficiencia al máximo nivel.</p>
-          </div>
+          {servicios.map((servicio, index) => (
+            <div key={index} style={styles.card}>
+              <h3>{servicio.titulo}</h3>
+              <p>{servicio.descripcion}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* CTA */}
       <section style={styles.cta}>
-        <h2>¿Listo para llevar tu proyecto al siguiente nivel?</h2>
-        <button style={styles.primaryBtn}>Contáctanos</button>
+        <h2>{ctaTexto}</h2>
+        <button style={styles.primaryBtn}>{ctaBoton}</button>
       </section>
-
     </main>
   );
 }
@@ -55,18 +49,22 @@ function Main() {
 const styles = {
   main: {
     fontFamily: "Segoe UI, sans-serif",
-    color: "#fff"
+    color: "#fff",
   },
 
   /* HERO */
-  hero: {
-    position: "relative",
-    textAlign: "center",
-    padding: "100px 20px",
-    borderRadius: "20px",
-    overflow: "hidden",
-    background: "linear-gradient(135deg, #667eea, #764ba2)"
-  },
+hero: {
+  position: "relative",
+  textAlign: "center",
+  padding: "140px 20px", 
+  borderRadius: "20px",
+  overflow: "hidden",
+  background: "linear-gradient(135deg, #667eea, #764ba2)",
+  display: "flex", 
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+},
   overlay: {
     position: "absolute",
     top: 0,
@@ -74,26 +72,32 @@ const styles = {
     right: 0,
     bottom: 0,
     background: "rgba(0,0,0,0.3)",
-    backdropFilter: "blur(6px)"
+    backdropFilter: "blur(6px)",
   },
-  title: {
-    position: "relative",
-    fontSize: "3rem",
-    marginBottom: "15px",
-    zIndex: 1
-  },
-  subtitle: {
-    position: "relative",
-    fontSize: "1.3rem",
-    marginBottom: "25px",
-    zIndex: 1
-  },
+title: {
+  position: "relative",
+  fontSize: "3rem",
+  marginBottom: "25px",
+  maxWidth: "700px", 
+  color: "#fff", 
+  zIndex: 1
+},
+
+subtitle: {
+  position: "relative",
+  fontSize: "1.3rem",
+  marginBottom: "40px", 
+  maxWidth: "600px",
+  lineHeight: "1.6",
+  color: "#e0e0e0",
+  zIndex: 1
+},
   buttons: {
     position: "relative",
     display: "flex",
     justifyContent: "center",
     gap: "15px",
-    zIndex: 1
+    zIndex: 1,
   },
   primaryBtn: {
     padding: "12px 25px",
@@ -104,7 +108,7 @@ const styles = {
     fontWeight: "bold",
     cursor: "pointer",
     transition: "0.3s",
-    boxShadow: "0 5px 15px rgba(0,0,0,0.3)"
+    boxShadow: "0 5px 15px rgba(0,0,0,0.3)",
   },
   secondaryBtn: {
     padding: "12px 25px",
@@ -113,18 +117,18 @@ const styles = {
     borderRadius: "30px",
     color: "#fff",
     cursor: "pointer",
-    transition: "0.3s"
+    transition: "0.3s",
   },
 
   /* SECTION */
   section: {
     marginTop: "60px",
-    textAlign: "center"
+    textAlign: "center",
   },
   sectionTitle: {
     fontSize: "2rem",
     marginBottom: "30px",
-    color: "#111"
+    color: "#111",
   },
 
   /* CARDS */
@@ -132,7 +136,7 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     gap: "25px",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   card: {
     background: "rgba(255,255,255,0.1)",
@@ -144,7 +148,7 @@ const styles = {
     backgroundColor: "#fff",
     boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
     transition: "transform 0.3s, box-shadow 0.3s",
-    cursor: "pointer"
+    cursor: "pointer",
   },
 
   /* CTA */
@@ -154,8 +158,8 @@ const styles = {
     textAlign: "center",
     borderRadius: "20px",
     background: "linear-gradient(135deg, #ff7a18, #ffb347)",
-    color: "#fff"
-  }
+    color: "#fff",
+  },
 };
 
 export default Main;
