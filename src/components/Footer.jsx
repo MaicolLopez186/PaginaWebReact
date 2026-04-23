@@ -2,70 +2,106 @@ function Footer({ descripcion, redes, fecha, ubicacion }) {
   return (
     <footer style={styles.footer}>
       <div style={styles.container}>
-        <h2 style={styles.logo}>Mi Sitio</h2>
+        
+        <h2 style={styles.logo}>🚀 Mi Sitio</h2>
 
         <div style={styles.grid}>
+          {/* DESCRIPCIÓN */}
           <div style={styles.section}>
-            <h3>Descripción</h3>
+            <h3 style={styles.title}>Descripción</h3>
             <p style={styles.text}>{descripcion}</p>
           </div>
 
+          {/* REDES */}
           <div style={styles.section}>
-            <h3>Redes</h3>
-            {redes.map((red) => (
-              <p style={{fontWeight:"bold"}}>{red}</p>
+            <h3 style={styles.title}>Redes</h3>
+            {redes.map((red, index) => (
+              <p key={index} style={styles.link}>
+                {red}
+              </p>
             ))}
           </div>
 
+          {/* UBICACIÓN */}
           <div style={styles.section}>
-            <h3>Ubicación</h3>
+            <h3 style={styles.title}>Ubicación</h3>
             <p style={styles.text}>{ubicacion}</p>
           </div>
 
+          {/* FECHA */}
           <div style={styles.section}>
-            <h3>Fecha</h3>
+            <h3 style={styles.title}>Fecha</h3>
             <p style={styles.text}>{fecha}</p>
           </div>
         </div>
+
+        <div style={styles.bottom}>
+          <p>© {new Date().getFullYear()} Mi Sitio | Todos los derechos reservados</p>
+        </div>
+
       </div>
     </footer>
   );
 }
-
 const styles = {
-  footer: {
-    backgroundColor: "#7e7fd5",
-    color: "#fff",
-    padding: "30px 20px",
-    marginTop: "40px",
-  },
-  container: {
-    maxWidth: "1000px",
-    margin: "0 auto",
-    textAlign: "center",
-  },
+footer: {
+  width: "100%",
+  background: "linear-gradient(135deg, #667eea, #764ba2)",
+  color: "#fff",
+  padding: "40px 20px",
+  marginTop: "60px",
+},
+
+container: {
+  width: "100%", 
+
+},
+
   logo: {
-    marginBottom: "20px",
-    fontSize: "24px",
+    marginBottom: "30px",
+    fontSize: "28px",
+    fontWeight: "bold",
   },
+
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-    gap: "20px",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+    gap: "25px",
     textAlign: "left",
   },
+
   section: {
-    backgroundColor: "rgba(255,255,255,0.1)",
-    padding: "15px",
-    borderRadius: "10px",
-    color: "#000000",
+    background: "rgba(255,255,255,0.1)",
+    backdropFilter: "blur(10px)",
+    padding: "20px",
+    borderRadius: "15px",
+    transition: "0.3s",
   },
+
+  title: {
+    marginBottom: "10px",
+    fontSize: "18px",
+  },
+
   text: {
-    fontFamily: "Segoe UI, sans-serif",
-    color: "#000000",
     fontSize: "14px",
-    marginTop: "5px",
-    fontWeight:"bold"
+    lineHeight: "1.5",
+    color: "#f1f1f1",
+  },
+
+  link: {
+    fontSize: "14px",
+    margin: "5px 0",
+    cursor: "pointer",
+    transition: "0.3s",
+  },
+
+  bottom: {
+    marginTop: "30px",
+    paddingTop: "15px",
+    borderTop: "1px solid rgba(255,255,255,0.3)",
+    fontSize: "13px",
+    color: "#ddd",
   },
 };
 

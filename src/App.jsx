@@ -27,7 +27,7 @@ function App() {
           },
         ]}
         ctaTexto="¿Listo para llevar tu proyecto al siguiente nivel?"
-        ctaBoton="Contáctanos"
+     
       />
       <Footer
         descripcion={"Esta es una excelente empresa de desarrollo"}
